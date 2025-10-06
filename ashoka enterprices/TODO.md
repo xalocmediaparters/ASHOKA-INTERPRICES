@@ -1,0 +1,2 @@
+- [x] Edit sections/services.html: Add overlay div with h4 and p for all solar service cards
+- [x] Edit assets/css/styles.css: Add styles for overlay slide-up on hover and position relative for service-card
