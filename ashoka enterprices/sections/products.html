@@ -1,0 +1,635 @@
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .products-section {
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            color: #1e40af;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: #000;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .product-icon {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            color: #1e40af;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .product-list {
+            display: grid;
+            gap: 25px;
+        }
+
+        .product-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .product-item:hover {
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+        }
+
+        .product-item img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .product-details {
+            width: 100%;
+        }
+
+        .product-details p {
+            color: #000;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            text-align: left;
+            width: 100%;
+        }
+
+        .label {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .description {
+            color: #000;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .read-more-btn {
+            display: none;
+        }
+
+        /* Warranty Section */
+        .warranty-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .warranty-section h3 {
+            color: #1e40af;
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .warranty-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .warranty-card {
+            background: #f8fafc;
+            border: 2px solid #1e40af;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .warranty-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .warranty-years {
+            color: #1e40af;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .warranty-card h4 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .warranty-card p {
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* Tablet responsive */
+        @media (max-width: 968px) {
+            .warranty-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .products-section {
+                padding: 20px 15px;
+            }
+
+            .container {
+                padding: 0 5px;
+            }
+
+            .product-card {
+                padding: 20px 15px;
+            }
+
+            .product-card h3 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .product-list {
+                gap: 15px;
+            }
+
+            .product-item {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .product-item img {
+                max-width: 150px;
+                margin: 0 auto 15px;
+            }
+
+            .product-details p {
+                margin-bottom: 8px;
+                font-size: 0.95rem;
+                text-align: left;
+            }
+
+            .description {
+                position: relative;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                text-align: left;
+                width: 100%;
+            }
+
+            .description.collapsed {
+                max-height: 3em;
+                line-height: 1.5em;
+            }
+
+            .description.collapsed::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 1.5em;
+                background: linear-gradient(to bottom, transparent, white);
+            }
+
+            .read-more-btn {
+                display: inline-block;
+                margin-top: 8px;
+                color: #1e40af;
+                font-weight: 600;
+                cursor: pointer;
+                border: none;
+                background: none;
+                padding: 5px 0;
+                font-size: 0.9rem;
+                text-decoration: none;
+                align-self: flex-start;
+            }
+
+            .read-more-btn:hover {
+                color: #3b82f6;
+            }
+
+            .read-more-btn::after {
+                content: ' ▼';
+                font-size: 0.7rem;
+            }
+
+            .read-more-btn.expanded::after {
+                content: ' ▲';
+            }
+
+            /* Warranty section mobile adjustments */
+            .warranty-section {
+                padding: 30px 15px;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .warranty-section h3 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .warranty-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                max-width: 100%;
+            }
+
+            .warranty-card {
+                padding: 20px 15px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .warranty-years {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+            .warranty-card h4 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+
+            .warranty-card p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                word-wrap: break-word;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .product-card {
+                padding: 15px 10px;
+            }
+
+            .product-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .product-item {
+                padding: 12px;
+            }
+
+            .product-item img {
+                max-width: 120px;
+            }
+
+            .product-details p {
+                font-size: 0.9rem;
+            }
+
+            .warranty-section {
+                padding: 25px 10px;
+            }
+
+            .warranty-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .warranty-card {
+                padding: 18px 12px;
+            }
+
+            .warranty-years {
+                font-size: 1.75rem;
+            }
+
+            .warranty-card h4 {
+                font-size: 1rem;
+            }
+
+            .warranty-card p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+<section id="products" class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Products & Warranty</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">3 KW to 5 KW On-Grid Solar System Components</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Solar Panels -->
+                <div class="product-card">
+                    <i class="fas fa-sun product-icon"></i>
+                    <h3>Solar Panels</h3>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <img src="assets/images/product/panel/540.png" alt="LUM 24540M- DCR (Bifacial)">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> LUM 24540M- DCR (Bifacial)</p>
+                                <p class="description collapsed">Luminous offers an extensive range of Mono PERC half-cut DCR and non-DCR solar panels, available in both Mono Facial and Bifacial variants. Our panels are fully compliant with IEC standards, making them ideal for a wide variety of applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=LUM 24540M- DCR (Bifacial)">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/panel/545.png" alt="LUM 24545M-DCR (Bifacial)">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> LUM 24545M-DCR (Bifacial)</p>
+                                <p class="description collapsed">Luminous offers an extensive range of Mono PERC half-cut DCR and non-DCR solar panels, available in both Mono Facial and Bifacial variants. Our panels are fully compliant with IEC standards, making them ideal for a wide variety of applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=LUM 24545M-DCR (Bifacial)">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/panel/550.png" alt="550W/24V Mono Perc Halfcut Solar Panel">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> 550W/24V Mono Perc Halfcut Solar Panel</p>
+                                <p class="description collapsed">Luminous offers a range of both Mono PERC halfcut solar panels and Polycrystalline PV modules. Our panels comply with IEC standard and are suitable for a wide range of applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=550W/24V Mono Perc Halfcut Solar Panel">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/panel/585.png" alt="LUM 24585T144-BI TS (Bifacial)- Non DCR">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> LUM 24585T144-BI TS (Bifacial)- Non DCR</p>
+                                <p class="description collapsed">Topcon bifacial solar panels are advanced photovoltaic modules designed to capture sunlight from both the front and back sides. Featuring N-type TOPCon (Tunnel Oxide Passivated Contact) technology, these panels offer superior efficiency and performance in high-temperature environments. They are built with durable materials to withstand harsh conditions, making them ideal for various applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=LUM 24585T144-BI TS (Bifacial)- Non DCR">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/panel/590.png" alt="LUM 24590T144 BI-TS">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> LUM 24590T144 BI-TS</p>
+                                <p class="description collapsed">Topcon bifacial solar panels are advanced photovoltaic modules designed to capture sunlight from both the front and back sides. Featuring N-type TOPCon (Tunnel Oxide Passivated Contact) technology, these panels offer superior efficiency and performance in high-temperature environments. They are built with durable materials to withstand harsh conditions, making them ideal for various applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=LUM 24590T144 BI-TS">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battery -->
+                <div class="product-card">
+                    <i class="fas fa-battery-full product-icon"></i>
+                    <h3>Battery</h3>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/ILST 12042.png" alt="Luminous Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> ILST 12042</p>
+                                <p><span class="label">Warranty:</span> 42 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 100 Ah</p>
+                                <p class="description collapsed">This range of Inverlast battery are designed to cope with mild-to-heavy loads for a longer duration. They are providing power for a long duration and are suitable for residential and commercial purposes.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=ILST 12042">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/ILTT 18060 PRO.png" alt="Exide Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> ILTT 18060 PRO</p>
+                                <p><span class="label">Warranty:</span> 54 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 150 Ah</p>
+                                <p class="description collapsed">Inverlast range of heavy-duty, Tall Tubular batteries are designed to support heavy load of electrical appliances during long & frequent power outages. These batteries contain special grade Lead alloy and are suitable for both HRD & SFC application. These batteries are designed with Orthogonal 3D grid for unmatched electrical performance.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=ILTT 18060 PRO">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/ILTT 20060.png" alt="Amaron Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> ILTT 20060</p>
+                                <p><span class="label">Warranty:</span> 60 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 160 Ah</p>
+                                <p class="description collapsed">Inverlast range of heavy-duty, Tall Tubular batteries are designed to support heavy load of electrical appliances during long & frequent power outages. These batteries contain special grade Lead alloy and are suitable for both HRD & SFC application. These batteries are designed with Orthogonal 3D grid for unmatched electrical performance.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=ILTT 20060">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/ILTT 20066.png" alt="Su-Kam Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> ILTT 20066</p>
+                                <p><span class="label">Warranty:</span> 66 MONTHS</p>
+                                <p class="description collapsed">Inverlast range of heavy-duty, Tall Tubular batteries are designed to support heavy load of electrical appliances during long & frequent power outages. These batteries contain special grade Lead alloy and are suitable for both HRD & SFC application. These batteries are designed with Orthogonal 3D grid for unmatched electrical performance.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=ILTT 20066">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/ILTT 32060.png" alt="Microtek Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> ILTT 32060</p>
+                                <p><span class="label">Warranty:</span> 60 MONTHS</p>
+                                <p class="description collapsed">Inverlast range of heavy-duty, Tall Tubular designed in a way that it has a power of 2in1 battery to support heavy load of electrical appliances during long & frequent power outages. These batteries contain special grade Lead alloy and are suitable for both HRD & SFC application.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=ILTT 32060">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/PC 18054 PRO.png" alt="Luminous Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> PC 18054 PRO</p>
+                                <p><span class="label">Warranty:</span> 54 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 150 Ah</p>
+                                <p class="description collapsed">Power charge batteries are designed for Rural and Semi-urban areas as they offer Value for money proposals with longer life and less maintenance. Tall Tubular Technology offers enhanced safety with thicker plates and specially designed rugged container.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=PC 18054 PRO">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/RC 18000 PRO.png" alt="Exide Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> RC 18000 PRO</p>
+                                <p><span class="label">Warranty:</span> 48 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 150 Ah</p>
+                                <p class="description collapsed">Red charge TT range of batteries offers worry free electrical performance during most arduous power cut scenario, ensuring both HRD capability & SFC capability. Batteries made in tall tower type container ensures lowest maintenance during its service life.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=RC 18000 PRO">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/RC 18000.png" alt="Amaron Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> RC 18000</p>
+                                <p><span class="label">Warranty:</span> 36 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 150 Ah</p>
+                                <p class="description collapsed">Red Charge TT range of batteries offer worry-free electrical performance during most arduous power-cut scenario, ensuring both HRD capability and SFC capability. Batteries made in tall tower type container also ensures lowest maintenance during its service life.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=RC 18000">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/RC 25000 PRO.png" alt="Su-Kam Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> RC 25000 PRO</p>
+                                <p><span class="label">Warranty:</span> 48 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 200 Ah</p>
+                                <p class="description collapsed">Red charge TT range of batteries offers worry free electrical performance during most arduous power cut scenario, ensuring both HRD capability & SFC capability. Batteries made in tall tower type container ensures lowest maintenance during its service life.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=RC 25000 PRO">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/RC 25000.png" alt="Microtek Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> RC 25000</p>
+                                <p><span class="label">Warranty:</span> 36 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 200 Ah</p>
+                                <p class="description collapsed">Red charge TT range of batteries offers worry free electrical performance during most arduous power cut scenario, ensuring both HRD capability & SFC capability. Batteries made in tall tower type container ensures lowest maintenance during its service life.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=RC 25000">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/battery/UCTT 18066.png" alt="Luminous Battery">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> UCTT 18066</p>
+                                <p><span class="label">Warranty:</span> 66 MONTHS</p>
+                                <p><span class="label">Capacity:</span> 150 Ah</p>
+                                <p class="description collapsed">The Ultra charge range of batteries are the most premium batteries from Luminous Cadre. These Tubular Technology batteries come in a rugged aesthetic container. It boasts extra safety and ultimate performance under extreme circumstances. It is designed for longer backup time with fast charging and ultra-low maintenance.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=UCTT 18066">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inverter -->
+                <div class="product-card">
+                    <i class="fas fa-plug product-icon"></i>
+                    <h3>Inverter</h3>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <img src="assets/images/product/Inverter/EVO S 750.png" alt="EVO S 750">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> EVO S 750</p>
+                                <p class="description collapsed">EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=EVO S 750">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/Inverter/EVO S 850.png" alt="EVO S 850">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> EVO S 850</p>
+                                <p class="description collapsed">EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=EVO S 850">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/Inverter/EVO S 1050.png" alt="EVO S 1050">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> EVO S 1050</p>
+                                <p class="description collapsed">EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=EVO S 1050">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/Inverter/EVO S1250.png" alt="EVO S 1250">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> EVO S 1250</p>
+                                <p class="description collapsed">EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=EVO S1250">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/Inverter/EVO S 1550.png" alt="EVO S 1550">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> EVO S 1550</p>
+                                <p class="description collapsed">EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=EVO S 1550">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/Inverter/EVO S 1650.png" alt="EVO S 1650">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> EVO S 1650</p>
+                                <p class="description collapsed">EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=EVO S 1650">Know More</a>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <img src="assets/images/product/Inverter/EVO S 2300.png" alt="EVO S 2300">
+                            <div class="product-details">
+                                <p><span class="label">Model:</span> EVO S 2300</p>
+                                <p class="description collapsed">EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications.</p>
+                                <a class="read-more-btn" href="sections/pages/knowmore.html?product=EVO S 2300">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warranty-section">
+                <h3>Comprehensive Warranty Coverage</h3>
+                <div class="warranty-grid">
+                    <div class="warranty-card">
+                        <div class="warranty-years">25 Years</div>
+                        <h4>PV Module Warranty</h4>
+                        <p>Performance warranty guaranteeing 80% of rated output after 25 years</p>
+                    </div>
+                    <div class="warranty-card">
+                        <div class="warranty-years">8 Years</div>
+                        <h4>PCU/Inverter Warranty</h4>
+                        <p>Comprehensive coverage for inverter and power conditioning unit</p>
+                    </div>
+                    <div class="warranty-card">
+                        <div class="warranty-years">5 Years</div>
+                        <h4>Complete System</h4>
+                        <p>Full system warranty from date of installation including workmanship</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
