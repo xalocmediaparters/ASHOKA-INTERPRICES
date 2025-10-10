@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Details - Ashoka Enterprises</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="icon" href="../../assets/images/logo/black.png" type="image/png" />
+</head>
+<body>
+    <div class="container">
+        <section class="readmore-section">
+            <div class="section-header">
+                <h2>Product Details</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="readmore-content" id="product-content">
+                <div id="product-image" style="text-align: center; margin-bottom: 2rem;">
+                    <img id="product-img" src="" alt="Product Image" style="max-width: 100%; height: auto; max-height: 300px;">
+                </div>
+                <div id="product-details">
+                    <h3 id="product-model" style="color: var(--primary-blue); margin-bottom: 1rem;"></h3>
+                    <p id="product-warranty" style="margin-bottom: 0.5rem;"></p>
+                    <p id="product-capacity" style="margin-bottom: 0.5rem;"></p>
+                    <p id="product-description" style="line-height: 1.6;"></p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <a href="../../index.html#products" id="back-to-products" class="btn-primary" style="text-decoration:none;">&larr; Back to Products</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Product data
+        const productsData = {
+            "LUM 24540M- DCR (Bifacial)": {
+                image: "../../assets/images/product/panel/540.png",
+                model: "LUM 24540M- DCR (Bifacial)",
+                description: "Luminous offers an extensive range of Mono PERC half-cut DCR and non-DCR solar panels, available in both Mono Facial and Bifacial variants. Our panels are fully compliant with IEC standards, making them ideal for a wide variety of applications."
+            },
+            "LUM 24545M-DCR (Bifacial)": {
+                image: "../../assets/images/product/panel/545.png",
+                model: "LUM 24545M-DCR (Bifacial)",
+                description: "Luminous offers an extensive range of Mono PERC half-cut DCR and non-DCR solar panels, available in both Mono Facial and Bifacial variants. Our panels are fully compliant with IEC standards, making them ideal for a wide variety of applications."
+            },
+            "550W/24V Mono Perc Halfcut Solar Panel": {
+                image: "../../assets/images/product/panel/550.png",
+                model: "550W/24V Mono Perc Halfcut Solar Panel",
+                description: "Luminous offers a range of both Mono PERC halfcut solar panels and Polycrystalline PV modules. Our panels comply with IEC standard and are suitable for a wide range of applications."
+            },
+            "LUM 24585T144-BI TS (Bifacial)- Non DCR": {
+                image: "../../assets/images/product/panel/585.png",
+                model: "LUM 24585T144-BI TS (Bifacial)- Non DCR",
+                description: "Topcon bifacial solar panels are advanced photovoltaic modules designed to capture sunlight from both the front and back sides. Featuring N-type TOPCon (Tunnel Oxide Passivated Contact) technology, these panels offer superior efficiency and performance in high-temperature environments. They are built with durable materials to withstand harsh conditions, making them ideal for various applications."
+            },
+            "LUM 24590T144 BI-TS": {
+                image: "../../assets/images/product/panel/590.png",
+                model: "LUM 24590T144 BI-TS",
+                description: "Topcon bifacial solar panels are advanced photovoltaic modules designed to capture sunlight from both the front and back sides. Featuring N-type TOPCon (Tunnel Oxide Passivated Contact) technology, these panels offer superior efficiency and performance in high-temperature environments. They are built with durable materials to withstand harsh conditions, making them ideal for various applications."
+            },
+            "ILST 12042": {
+                image: "../../assets/images/product/battery/ILST 12042.png",
+                model: "ILST 12042",
+                warranty: "42 MONTHS",
+                capacity: "100 Ah",
+                description: "This range of Inverlast battery are designed to cope with mild-to-heavy loads for a longer duration. They are providing power for a long duration and are suitable for residential and commercial purposes."
+            },
+            "ILTT 18060 PRO": {
+                image: "../../assets/images/product/battery/ILTT 18060 PRO.png",
+                model: "ILTT 18060 PRO",
+                warranty: "54 MONTHS",
+                capacity: "150 Ah",
+                description: "Inverlast range of heavy-duty, Tall Tubular batteries are designed to support heavy load of electrical appliances during long & frequent power outages. These batteries contain special grade Lead alloy and are suitable for both HRD & SFC application. These batteries are designed with Orthogonal 3D grid for unmatched electrical performance."
+            },
+            "ILTT 20060": {
+                image: "../../assets/images/product/battery/ILTT 20060.png",
+                model: "ILTT 20060",
+                warranty: "60 MONTHS",
+                capacity: "160 Ah",
+                description: "Inverlast range of heavy-duty, Tall Tubular batteries are designed to support heavy load of electrical appliances during long & frequent power outages. These batteries contain special grade Lead alloy and are suitable for both HRD & SFC application. These batteries are designed with Orthogonal 3D grid for unmatched electrical performance."
+            },
+            "ILTT 20066": {
+                image: "../../assets/images/product/battery/ILTT 20066.png",
+                model: "ILTT 20066",
+                warranty: "66 MONTHS",
+                description: "Inverlast range of heavy-duty, Tall Tubular batteries are designed to support heavy load of electrical appliances during long & frequent power outages. These batteries contain special grade Lead alloy and are suitable for both HRD & SFC application. These batteries are designed with Orthogonal 3D grid for unmatched electrical performance."
+            },
+            "ILTT 32060": {
+                image: "../../assets/images/product/battery/ILTT 32060.png",
+                model: "ILTT 32060",
+                warranty: "60 MONTHS",
+                description: "Inverlast range of heavy-duty, Tall Tubular designed in a way that it has a power of 2in1 battery to support heavy load of electrical appliances during long & frequent power outages. These batteries contain special grade Lead alloy and are suitable for both HRD & SFC application."
+            },
+            "PC 18054 PRO": {
+                image: "../../assets/images/product/battery/PC 18054 PRO.png",
+                model: "PC 18054 PRO",
+                warranty: "54 MONTHS",
+                capacity: "150 Ah",
+                description: "Power charge batteries are designed for Rural and Semi-urban areas as they offer Value for money proposals with longer life and less maintenance. Tall Tubular Technology offers enhanced safety with thicker plates and specially designed rugged container."
+            },
+            "RC 18000 PRO": {
+                image: "../../assets/images/product/battery/RC 18000 PRO.png",
+                model: "RC 18000 PRO",
+                warranty: "48 MONTHS",
+                capacity: "150 Ah",
+                description: "Red charge TT range of batteries offers worry free electrical performance during most arduous power cut scenario, ensuring both HRD capability & SFC capability. Batteries made in tall tower type container ensures lowest maintenance during its service life."
+            },
+            "RC 18000": {
+                image: "../../assets/images/product/battery/RC 18000.png",
+                model: "RC 18000",
+                warranty: "36 MONTHS",
+                capacity: "150 Ah",
+                description: "Red Charge TT range of batteries offer worry-free electrical performance during most arduous power-cut scenario, ensuring both HRD capability and SFC capability. Batteries made in tall tower type container also ensures lowest maintenance during its service life."
+            },
+            "RC 25000 PRO": {
+                image: "../../assets/images/product/battery/RC 25000 PRO.png",
+                model: "RC 25000 PRO",
+                warranty: "48 MONTHS",
+                capacity: "200 Ah",
+                description: "Red charge TT range of batteries offers worry free electrical performance during most arduous power cut scenario, ensuring both HRD capability & SFC capability. Batteries made in tall tower type container ensures lowest maintenance during its service life."
+            },
+            "RC 25000": {
+                image: "../../assets/images/product/battery/RC 25000.png",
+                model: "RC 25000",
+                warranty: "36 MONTHS",
+                capacity: "200 Ah",
+                description: "Red charge TT range of batteries offers worry free electrical performance during most arduous power cut scenario, ensuring both HRD capability & SFC capability. Batteries made in tall tower type container ensures lowest maintenance during its service life."
+            },
+            "UCTT 18066": {
+                image: "../../assets/images/product/battery/UCTT 18066.png",
+                model: "UCTT 18066",
+                warranty: "66 MONTHS",
+                capacity: "150 Ah",
+                description: "The Ultra charge range of batteries are the most premium batteries from Luminous Cadre. These Tubular Technology batteries come in a rugged aesthetic container. It boasts extra safety and ultimate performance under extreme circumstances. It is designed for longer backup time with fast charging and ultra-low maintenance."
+            },
+            "EVO S 750": {
+                image: "../../assets/images/product/Inverter/EVO S 750.png",
+                model: "EVO S 750",
+                description: "EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications."
+            },
+            "EVO S 850": {
+                image: "../../assets/images/product/Inverter/EVO S 850.png",
+                model: "EVO S 850",
+                description: "EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications."
+            },
+            "EVO S 1050": {
+                image: "../../assets/images/product/Inverter/EVO S 1050.png",
+                model: "EVO S 1050",
+                description: "EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications."
+            },
+            "EVO S 1250": {
+                image: "../../assets/images/product/Inverter/EVO S1250.png",
+                model: "EVO S 1250",
+                description: "EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications."
+            },
+            "EVO S 1550": {
+                image: "../../assets/images/product/Inverter/EVO S 1550.png",
+                model: "EVO S 1550",
+                description: "EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications."
+            },
+            "EVO S 1650": {
+                image: "../../assets/images/product/Inverter/EVO S 1650.png",
+                model: "EVO S 1650",
+                description: "EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications."
+            },
+            "EVO S 2300": {
+                image: "../../assets/images/product/Inverter/EVO S 2300.png",
+                model: "EVO S 2300",
+                description: "EVO S series with pure sine wave technology is a best seller from the house of Luminous. It is equipped with an advanced microporcessor design, LVFC technology, user friendly LED indications and many other features and alarms making it the best choice for home, office and small commercial applications."
+            }
+        };
+
+        // Get product from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const product = urlParams.get('product');
+
+        if (product && productsData[product]) {
+            const data = productsData[product];
+            document.getElementById('product-img').src = data.image;
+            document.getElementById('product-img').alt = data.model;
+            document.getElementById('product-model').textContent = data.model;
+            if (data.warranty) {
+                document.getElementById('product-warranty').textContent = `Warranty: ${data.warranty}`;
+            } else {
+                document.getElementById('product-warranty').style.display = 'none';
+            }
+            if (data.capacity) {
+                document.getElementById('product-capacity').textContent = `Capacity: ${data.capacity}`;
+            } else {
+                document.getElementById('product-capacity').style.display = 'none';
+            }
+            document.getElementById('product-description').textContent = data.description;
+
+            // Set back button href based on product category
+            const backBtn = document.getElementById('back-to-products');
+            if (data.warranty) {
+                backBtn.href = '../../index.html#battery';
+            } else if (product.startsWith('EVO')) {
+                backBtn.href = '../../index.html#inverter';
+            } else {
+                backBtn.href = '../../index.html#solar-panels';
+            }
+        } else {
+            document.getElementById('product-content').innerHTML = '<p>Product not found.</p>';
+        }
+    </script>
+
+    <script src="../../js/script.js"></script>
+</body>
+</html>
