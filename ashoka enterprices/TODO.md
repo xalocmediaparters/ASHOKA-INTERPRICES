@@ -1,0 +1,2 @@
+- [x] Modify the contact form submit handler in js/script.js to generate and open a mailto link with pre-filled email details (to: ashokaenterprisesluminous@gmail.com, subject: "New Inquiry from [Name]", body: Name, Email, Phone, Message), using URL encoding and preventing normal form submission.
+- [x] Fix the SQLite table creation code in temp.py: correct the CHECK constraint syntax, add commit and close.
