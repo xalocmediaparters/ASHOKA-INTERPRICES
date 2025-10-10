@@ -1,0 +1,16 @@
+assets\
+css\
+css\styles.css
+index.html
+js\
+js\script.js
+main.py
+sections\
+sections\about.html
+sections\components\
+sections\components\footer.html
+sections\components\header.html
+sections\contact.html
+sections\products.html
+sections\projects.html
+sections\services.html
